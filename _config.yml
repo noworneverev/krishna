@@ -1,6 +1,6 @@
 ### your site title here
 
-title: Krishna
+title: 小朋友的會計程式之路
 
 sass: 
     style: compressed
@@ -15,3 +15,7 @@ exclude:
 
 include: 
 - _pages
+
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "/blog/page:num/"
