@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll Blog 字型更改成思源黑體"
+title:  "【Jekyll】 Blog 字型更改成思源黑體"
 date:   2017-04-21 19:00
 icon: font
 comments: true

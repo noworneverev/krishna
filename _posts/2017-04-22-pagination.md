@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  "Jekyll Blog Pagination 分頁(換頁)"
+title:  "【Jekyll】 Blog Pagination 分頁(換頁)"
 date:   2017-04-22 07:00
 icon: code
 comments: true
 ---
 
-### Jekyll有提供分頁功能(Pagination)，這個版型沒有預設這個功能，要自己新增
+&nbsp;&nbsp;&nbsp;&nbsp;To enable pagination for your blog, you have to include `jekyll-paginate` plugin in your Gemfile and in your  `_config.yml` under gems.
 
-* Step 1: 安裝``jekyll-paginate``
+1. Install ``jekyll-paginate``
 
 {% highlight ruby %}
 
@@ -16,7 +16,7 @@ $ gem install jekyll-paginate
 
 {% endhighlight %}
 
-* Step 2: 修改``_config.yml``
+2\. Modify ``_config.yml``
 {% highlight yml %}
 
 gems: [jekyll-paginate]
@@ -27,9 +27,9 @@ url: https://noworneverev.github.io
 baseurl: 
 
 {% endhighlight %}
-上面的url記得改成自己的username
+&nbsp;&nbsp; Remember change url to your domain name.
 
-* Step 3: 修改``index.html``, 照搬[官網](https://jekyllrb.com/docs/pagination/){: target="_blank"}的文件：
+3\. Modify ``index.html``, Refer to [Jekyll docs](https://jekyllrb.com/docs/pagination/){: target="_blank"}:
 
 {% highlight html %}
 {% raw %}
@@ -83,7 +83,7 @@ baseurl:
 {% endraw %}
 
 {% endhighlight %}
-Then, it's done.
+&nbsp;&nbsp;Then, it's done.
 
 
 
