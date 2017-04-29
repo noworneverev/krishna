@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm a CPA who interested in programming.
+I'm a CPA who is interested in programming.
 
 This blog is built to document my learning progress and share the things which might be useful as well.
 
