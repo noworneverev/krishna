@@ -34,7 +34,7 @@ tags: Excel
 7\. Results
 
 <img src="/images/0917/8.png">
-<img src="/images/0917/result1.png">
+<img src="/images/0917/result.png">
 
 
 <br>
