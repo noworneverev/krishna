@@ -1,14 +1,12 @@
 ---
-layout: post
+layout: postt
 title: Contact
 permalink: /contact/
 ---
 
-Insert a form or contact details here.
+E-mail:  [n9102125@gmail.com](mailto:n9102125@gmail.com)
 
-More about jekyll forms here: [https://blog.webjeda.com/jekyll-contact-form/](https://blog.webjeda.com/jekyll-contact-form/)
-
-Be in touch and get updates on our new themes in your facebook feed by liking us.
+Be in touch and get updates on my new projects in your facebook feed by liking the Accoding.
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -20,6 +18,6 @@ Be in touch and get updates on our new themes in your facebook feed by liking us
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<div class="fb-page" data-href="https://www.facebook.com/webjeda/" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/webjeda/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/webjeda/">WebJeda</a></blockquote></div>
+<div class="fb-page" data-href="https://www.facebook.com/AccodingTW/" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/AccodingTW/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/AccodingTW/">Accoding</a></blockquote></div>
 
 

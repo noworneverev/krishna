@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: postt
 title: Archive
 permalink: /archive/
 ---
 
-<section id="archive">
+<section id="archive" style="font-family:'Space Mono', monospace, 'Noto Sans TC'; line-height: 33px;">
 <h2><i class="fa fa-file-archive-o"></i>&nbsp;Articles from this year</h2>
 {% for post in site.posts %}
   {% unless post.next %}

@@ -4,6 +4,7 @@ title:  "【遊記】 京阪奈姬路十日遊 88個紀念章之旅"
 date:   2016-07-22 01:43
 icon: plane
 comments: true
+tags: Life
 ---
 
 [PTT日旅板文章連結](https://www.ptt.cc/bbs/Japan_Travel/M.1469123039.A.027.html){: target="_blank"}

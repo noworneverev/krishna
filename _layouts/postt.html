@@ -12,17 +12,13 @@ layout: default
     </div>
     {% endif %}
     <div class="title">
-        <h2 style="font-family: 'Space Mono', monospace, 'Noto Sans TC';">{{page.title}}</h2>
+        <h2>{{page.title}}</h2>
         
         <span>
             <time datetime="">
                    {{ page.date | date: '%B %d, %Y' }}
             </time>
         </span>
-    <span class="fa-stack fa-sm">
-      <i class="fa fa-tags fa-stack-1x"></i>
-    </span>
-    : {% for tag in page.tags %} <a class="tag-wrapper" href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="tags">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %}
     </div>
 
 

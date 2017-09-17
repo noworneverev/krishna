@@ -1,16 +1,12 @@
 ---
-layout: post
+layout: postt
 title: About
 permalink: /about/
 ---
 
-I'm a CPA who is interested in programming.
+I'm currently working as a staff in one of the Big 4 in Taiwan.
 
-This blog is built to document my learning progress and share the things which might be useful as well.
-
-I am a slow walker, but I'm moving forward step by step. 
-
-I know I can't be everthing to everyone, however, I can be something to someone ... even a lot of someones.
+I don't know how far I could go, but I gotta do something.
 
 **Does the blog deserve a star?**
 

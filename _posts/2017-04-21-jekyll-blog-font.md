@@ -4,6 +4,7 @@ title:  "【Jekyll】 Blog 字型更改成思源黑體"
 date:   2017-04-21 19:00
 icon: font
 comments: true
+tags: Jekyll
 ---
 
 這個版型預設的中文字型是cursive，如果要更換字型要到`css`資料夾，開啟`main.scss`，修改成以下的code，以新增`Noto Sans TC`字型：

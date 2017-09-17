@@ -4,11 +4,12 @@ title:  "【Jekyll】 Blog Pagination 分頁(換頁)"
 date:   2017-04-22 07:00
 icon: code
 comments: true
+tags: Jekyll
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;To enable pagination for your blog, you have to include `jekyll-paginate` plugin in your Gemfile and in your  `_config.yml` under gems.
 
-1. Install ``jekyll-paginate``
+1\. Install ``jekyll-paginate``
 
 {% highlight ruby %}
 
