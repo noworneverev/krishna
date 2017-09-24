@@ -27,7 +27,7 @@ End Sub
 
 {% endhighlight %}
 
-If you've selected the last worksheet and then exectue the code above, there would be an error popping out. To prevent this situation, I add a if...else statement to fix it.
+If you've selected the last worksheet and then exectue the code above, there would be an error popping out. To prevent this situation, I add an if...else statement to fix it.
 
 {% highlight vb %}
 
