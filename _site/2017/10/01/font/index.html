@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>【VBA】 Custom previous and next sheet button - Accoding</title>
+  <title>【VBA】 Custom font name and size button - Accoding</title>
   <link rel="stylesheet" href="/css/main.css">
   <!--   Syntax highlighting is only needed for posts -->
   
@@ -36,16 +36,16 @@
     
     <div class="logo">
         
-            <i class="fa fa-arrow-circle-o-right"></i>
+            <i class="fa fa-font"></i>
         
     </div>
     
     <div class="title">
-        <h2 style="font-family: 'Space Mono', monospace, 'Noto Sans TC';">【VBA】 Custom previous and next sheet button</h2>
+        <h2 style="font-family: 'Space Mono', monospace, 'Noto Sans TC';">【VBA】 Custom font name and size button</h2>
         
         <span>
             <time datetime="">
-                   September 24, 2017
+                   October 01, 2017
             </time>
         </span>
     <span class="fa-stack fa-sm">
@@ -59,36 +59,24 @@
 </div>
 
 
-<p><strong>Download:</strong>  <a href="https://github.com/noworneverev/noworneverev.github.io/releases/download/1.1/NextWorksheet.xlam" target="_blank">Nextworksheet.xlam</a></p>
+<p><strong>Download:</strong>  <a href="https://github.com/noworneverev/noworneverev.github.io/releases/download/1.2/Font.xlam" target="_blank">Font.xlam</a></p>
 
-<p><strong>Demo:</strong> <img src="https://i.imgur.com/nBuWG6R.gif" alt="" /></p>
+<p><strong>Demo:</strong> <img src="/images/font.gif" alt="" /></p>
 
 <p>If you don’t know how to use xlam file, here’s the <a href="/2017/09/17/excel-customize-ribbon/" target="_blank">tutorial</a>.</p>
 
-<p>This is a basic customized Excel add-in to emulate browser’s previous and next button.</p>
+<p>You can modify the font name between quotation marks to customize the worksheet with your oftenly used font name and size.</p>
 
-<p>Firstly, you can record a macro to see how Excel execute this simple function:</p>
-
-<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Sub</span> <span class="nf">NextWorksheet</span><span class="p">()</span>
-
-<span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Next</span><span class="p">.</span><span class="n">Select</span>
-
-<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
-
-<p>If you’ve selected the last worksheet and then exectue the code above, there would be an error popping out. To prevent this situation, I add an if…else statement to fix it.</p>
-
-<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Sub</span> <span class="nf">NextWorksheet</span><span class="p">()</span>
-
-<span class="k">Dim</span> <span class="nv">NumberOfSheet</span> <span class="ow">As</span> <span class="kt">Integer</span>
-
-<span class="n">NumberOfSheet</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span>
-
-<span class="k">If</span> <span class="k">Not</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Index</span> <span class="o">=</span> <span class="n">NumberOfSheet</span> <span class="k">Then</span>
-    <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Next</span><span class="p">.</span><span class="n">Select</span>
-<span class="k">Else</span>
-<span class="k">Exit</span> <span class="k">Sub</span>
-<span class="nf">End</span> <span class="k">If</span>
-
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Sub</span> <span class="nf">Font</span><span class="p">()</span>
+    <span class="n">Cells</span><span class="p">.</span><span class="n">Select</span>
+    <span class="n">Selection</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"微軟正黑體"</span>
+    <span class="n">Selection</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="s">"10"</span>
+    <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">"A1"</span><span class="p">).</span><span class="n">Select</span>
+<span class="k">End</span> <span class="k">Sub</span>
+<span class="c1">'---------------------------------------</span>
+<span class="k">Sub</span> <span class="nf">Font_custom</span><span class="p">()</span>
+    <span class="n">Selection</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"微軟正黑體"</span>
+    <span class="n">Selection</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="s">"10"</span>
 <span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
 
 <p><br />
