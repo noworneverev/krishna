@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "【VBA】 Custom Paste Special Format"
+title:  "【VBA】 Special Paste"
 date:   2017-11-11 07:00
 icon: paste
 comments: true
