@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>【Excel】 Excel Basics - Accoding</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <!--   Syntax highlighting is only needed for posts -->
+  
+  <link rel="stylesheet" href="/css/syntax-highlighter.css">
+  
+  <link href="//fonts.googleapis.com/css?family=Space+Mono|Work+Sans:700" rel="stylesheet">
+
+</head>
+<body>
+
+<input type="checkbox" id="hamburger" name="hamburger">
+<label id="label-ham" for="hamburger"></label>
+<div class="menu-container">
+  <div class="menu"></div>
+  <div class="links" style="font-family:'Space Mono', monospace;">
+      <a href="/"><i class="fa fa-home"></i>&nbsp;Home</a>
+      <a href="/about/"><i class="fa fa-user"></i>&nbsp;About</a>
+      <a href="/archive/"><i class="fa fa-file-zip-o"></i>&nbsp;Archive</a>
+      <a href="/contact/"><i class="fa fa-address-book-o"></i>&nbsp;Contact</a>
+      <a href="https://github.com/noworneverev/noworneverev.github.io"><i class="fa fa-code-fork"></i>&nbsp;Project</a>
+      <a href="https://github.com/noworneverev"><i class="fa fa-github"></i>&nbsp;Github</a>
+  </div>
+</div>
+
+<div class="content">
+<header>
+     <a href="/"><h1 class="site-title">Accoding</h1></a>
+</header>
+  <div class="post-title">
+    
+    <div class="logo">
+        
+            <i class="fa fa-file-excel-o"></i>
+        
+    </div>
+    
+    <div class="title">
+        <h2 style="font-family: 'Space Mono', monospace, 'Noto Sans TC';">【Excel】 Excel Basics</h2>
+        
+        <span>
+            <time datetime="">
+                   November 25, 2017
+            </time>
+        </span>
+    <span class="fa-stack fa-sm">
+      <i class="fa fa-tags fa-stack-1x"></i>
+    </span>
+    :  <a class="tag-wrapper" href="/tags/Excel" title="View posts tagged with &quot;Excel&quot;"><span class="tags">Excel</span></a>   
+    </div>
+
+
+
+</div>
+
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<p><strong>原文：</strong><a href="https://www.ptt.cc/bbs/Accounting/M.1511544733.A.5F1.html" target="_blank">R: [請益] 事務所的軟體</a></p>
+
+<p><strong>範例檔下載:</strong>  <a href="https://github.com/noworneverev/noworneverev.github.io/releases/download/1.9/Basic.Excel.xlsx" target="_blank">Excel Basics.xlsx</a></p>
+
+<h3 id="快捷鍵">＊快捷鍵：</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>快捷鍵</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.</td>
+      <td>Ctrl + C</td>
+      <td>複製</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Ctrl + X</td>
+      <td>剪下</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>Ctrl + V</td>
+      <td>貼上</td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td>Ctrl + Alt + V</td>
+      <td>選擇性貼上</td>
+    </tr>
+    <tr>
+      <td>5.</td>
+      <td>Ctrl + B 或 + 2</td>
+      <td>粗體</td>
+    </tr>
+    <tr>
+      <td>6.</td>
+      <td>Ctrl + A</td>
+      <td>全選</td>
+    </tr>
+    <tr>
+      <td>7.</td>
+      <td>Ctrl + Z</td>
+      <td>還原</td>
+    </tr>
+    <tr>
+      <td>8.</td>
+      <td>Ctrl + F</td>
+      <td>尋找</td>
+    </tr>
+    <tr>
+      <td>9.</td>
+      <td>Ctrl + H</td>
+      <td>取代</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Ctrl + P</td>
+      <td>列印</td>
+    </tr>
+    <tr>
+      <td>11.</td>
+      <td>Ctrl + 1</td>
+      <td>開啟儲存格格式</td>
+    </tr>
+    <tr>
+      <td>12.</td>
+      <td>Ctrl + D</td>
+      <td>向下填滿</td>
+    </tr>
+    <tr>
+      <td>13.</td>
+      <td>Ctrl + PgDn</td>
+      <td>下一張工作表</td>
+    </tr>
+    <tr>
+      <td>14.</td>
+      <td>Ctrl + PgUp</td>
+      <td>上一張工作表</td>
+    </tr>
+    <tr>
+      <td>15.</td>
+      <td>Alt + =</td>
+      <td>向上加總</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="公式">＊公式</h3>
+
+<p>基本概念：</p>
+<ul>
+  <li>Excel中冒號(<span style="color:#3d8fd1;">:</span>)表連續</li>
+  <li>錢錢符號(<span style="color:#3d8fd1;">$</span>)表絕對位置</li>
+  <li>單引號(<span style="color:#3d8fd1;">’</span>)會將該儲存格轉成文字格式</li>
+  <li>公式(Function)有幾個前括弧就要有幾個後括弧</li>
+</ul>
+
+<hr />
+
+<h4 id="1-sumif準則範圍-加總準則-加總範圍">1. =Sumif(準則範圍, 加總準則, [加總範圍])</h4>
+
+<p>若沒有加總儲存格的範圍，默認加總範圍為準則範圍，例如用”a”這個tickmark來標示你要加總的地方(A1:A4)，把”a”打在如[B1]、[B2]儲存格</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>=Sumif($B:$B, “a”, $A:$A) = 3</p>
+
+<p>在打公式時按<span style="color:#3d8fd1;">F4</span>將該範圍變成<span style="color:#3d8fd1;">絕對位置</span>，如此公式才不會在複製時就跑掉，一般Excel的公式都是<span style="color:#3d8fd1;">相對位置</span>，所以例如複製[A11]=Sum(A1:A10)到[B11]時公式會自動變成=Sum(B1:B10)。</p>
+
+<p><img src="/images/sumif.png" alt="" /></p>
+
+<p>上面Sumif是加總，如果Countif就計數，概念差不多</p>
+
+<hr />
+
+<h4 id="2-vlookup你要找的值-在哪裡找-回傳第幾欄-是否完全符合">2. =VLOOKUP(你要找的值, 在哪裡找, 回傳第幾欄, 是否完全符合)</h4>
+<p>用到爛的vlookup，大部分人找值都是用這個函數，無腦又好用</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>=VLOOKUP(A1, $C:$E, 2, FALSE) = PPT</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>=VLOOKUP(A2, $C:$E, 2, FALSE) = PTT</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>#N/A</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>#N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>資料來源：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2</td>
+      <td>PTT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>PPT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>為了避免因為資料來源沒該筆查找資料而跑出#N/A的狀況，我會將公式改寫成=<span style="color:#3d8fd1;">IFERROR</span>(VLOOKUP(A1, $C:$E, 2, FALSE),””)，
+多個IFERROR來進行錯誤處理，將#N/A變空白””</p>
+
+<p>VLOOKUP還有一個限制是它只能尋找表格陣列最左邊的欄中的值，當然可以自己整理一下表格什麼的處理，不過Excel還有<span style="color:#3d8fd1;">INDEX</span>和<span style="color:#3d8fd1;">MATCH</span>可以來完美取代VLOOKUP，查找大量資料時經過實測速度也是屌打VLOOKUP</p>
+
+<p>官方文件： <br />
+MATCH 函數會搜尋儲存格範圍中的指定項目，並傳回該項目於該範圍中的相對位置。
+例如，若範圍 A1:A3 中含有值 5、25 及 38，則公式 =MATCH(25,A1:A3,0) 會傳回數字
+ 2，因為 25 是範圍中的第二個項目。</p>
+
+<h4 id="index的使用方法為index資料來源-第幾列-第幾欄">INDEX的使用方法為：=INDEX(資料來源, 第幾列, 第幾欄)</h4>
+
+<p>所以基本的概念就是，用MATCH先找到你的資料是第幾列，再指定你要回傳的欄位，=INDEX(資料來源, MATCH(~~~), 欄位)，範例檔有一個簡易匯率表用INDEX &amp; MATCH來完成可參考。</p>
+
+<hr />
+
+<h4 id="3-iflogic_test-if-true-if-false">3. =IF(logic_test, if True, if False)</h4>
+
+<p>IF公式也是常用的前幾名，IF…Then…ELSE</p>
+
+<p>常搭配AND()公式使用，用作邏輯測試判斷TRUE or False</p>
+<ul>
+  <li>=AND(1=1,2=2,3=3) 傳回TRUE</li>
+  <li>=AND(1=1,2=2,3=2) 傳回FALSE</li>
+</ul>
+
+<p>另外可以寫成巢狀來處理更多的情況，<br />
+IF(logic_test, if True, if(logic_test, if True, if(logic_test, if True,false)))<br />
+範例檔有一個隨便寫的巢狀公式可參考。
+<img src="/images/if.png" alt="" /></p>
+
+<p>因為Excel公式都要寫成一行，如果真的遇到要寫巢狀公式時，可以拿紙筆出來實際寫較有感覺。</p>
+
+<p>IF…THEN <br />
+  xxx<br />
+ELSE IF<br />
+  xxx<br />
+ELSE IF<br />
+  xxx<br />
+ELSE<br />
+  xxx<br />
+END IF</p>
+
+<p><br />
+<br /></p>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-noworneverev-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+    <footer>
+      <p style="font-family:'Space Mono', monospace;">&copy; Copyright 2017 | Noworneverev's Blog | All rights reserved</p>
+  </footer>
+</div>
+  <!-- Calling Fontawesome at the end to avoid delay in loading --> 
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106614437-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106614437-1');
+</script>
+</body>
+</html>
