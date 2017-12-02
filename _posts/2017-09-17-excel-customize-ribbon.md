@@ -6,6 +6,8 @@ icon: file-excel-o
 comments: true
 tags: Excel
 ---
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/_8ez9G_QCUU" frameborder="0" allowfullscreen></iframe></div>
+
 1\. Right click any tab on the ribbon
 
 <img src="/images/0917/1.png">

@@ -11,7 +11,9 @@ tags: VBA Excel
 
 **Demo:** ![](/images/market.gif)
 
-If you don't know how to use xlam file, here's the [tutorial]({% post_url 2017-09-17-excel-customize-ribbon %}){: target="_blank"}.
+If you don't know how to use xlam file, here's the [tutorial]({% post_url 2017-09-17-excel-customize-ribbon %}){: target="_blank"} and its video below.
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/_8ez9G_QCUU" frameborder="0" allowfullscreen></iframe></div>
 
 In Taiwan, there's an official site like EDGAR called Market Observation Post System (公開資訊觀測站) for users to search information of public traded companies. However, sometimes it's hard for users to find their targeting info. As a staff of an accounting firm, financial reports and annual reports are what I need mostly. So I wrote a function in which you can enter the company's code and the year to open your designated pages through Google Chrome.
 
