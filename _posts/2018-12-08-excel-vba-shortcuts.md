@@ -26,7 +26,8 @@ tr:nth-child(even) {
 
 **How to use:**![](https://i.imgur.com/ierGstN.gif)
 
-**Demo:**<iframe width="560" height="315" src="https://www.youtube.com/embed/1ur0allw3Jc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+**Demo:** 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1ur0allw3Jc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **Original Post:** [Re: [請益] 事務所工作準備(Excel快捷鍵整理 & VBA快捷鍵)](https://www.ptt.cc/bbs/Accounting/M.1538906825.A.2D4.html){: target="_blank"}
 
