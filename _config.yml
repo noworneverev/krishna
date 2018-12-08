@@ -16,7 +16,7 @@ exclude:
 include: 
 - _pages
 
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 5
 
 # Permalinks
@@ -26,3 +26,4 @@ permalink: pretty
 url: https://noworneverev.github.io
 baseurl: 
 
+port: 5001
