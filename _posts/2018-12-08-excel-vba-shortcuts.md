@@ -4,7 +4,7 @@ title:  "【VBA】 22 Excel Custom VBA Shortcuts"
 date:   2018-12-08 07:00
 icon: fighter-jet
 comments: true
-tags: VBA Excel
+tags: Excel VBA
 ---
 <style>
 table {
