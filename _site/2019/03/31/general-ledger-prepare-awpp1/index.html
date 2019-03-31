@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>【VBA】 General Ledger Preparer (1/1) - Accoding</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <!--   Syntax highlighting is only needed for posts -->
+  
+  <link rel="stylesheet" href="/css/syntax-highlighter.css">
+  
+  <link href="//fonts.googleapis.com/css?family=Space+Mono|Work+Sans:700" rel="stylesheet">
+
+</head>
+<body>
+
+<input type="checkbox" id="hamburger" name="hamburger">
+<label id="label-ham" for="hamburger"></label>
+<div class="menu-container">
+  <div class="menu"></div>
+  <div class="links" style="font-family:'Space Mono', monospace;">
+      <a href="/"><i class="fa fa-home"></i>&nbsp;Home</a>
+      <a href="/about/"><i class="fa fa-user"></i>&nbsp;About</a>
+      <a href="/archive/"><i class="fa fa-file-zip-o"></i>&nbsp;Archive</a>
+      <a href="/contact/"><i class="fa fa-address-book-o"></i>&nbsp;Contact</a>
+      <a href="https://github.com/noworneverev/noworneverev.github.io"><i class="fa fa-code-fork"></i>&nbsp;Project</a>
+      <a href="https://github.com/noworneverev"><i class="fa fa-github"></i>&nbsp;Github</a>
+  </div>
+</div>
+
+<div class="content">
+<header>
+     <a href="/"><h1 class="site-title">Accoding</h1></a>
+</header>
+  <div class="post-title">
+    
+    <div class="logo">
+        
+            <i class="fa fa-gift"></i>
+        
+    </div>
+    
+    <div class="title">
+        <h2 style="font-family: 'Space Mono', monospace, 'Noto Sans TC';">【VBA】 General Ledger Preparer (1/1)</h2>
+        
+        <span>
+            <time datetime="">
+                   March 31, 2019
+            </time>
+        </span>
+    <span class="fa-stack fa-sm">
+      <i class="fa fa-tags fa-stack-1x"></i>
+    </span>
+    :  <a class="tag-wrapper" href="/tags/VBA" title="View posts tagged with &quot;VBA&quot;"><span class="tags">VBA</span></a>    <a class="tag-wrapper" href="/tags/Excel" title="View posts tagged with &quot;Excel&quot;"><span class="tags">Excel</span></a>   
+    </div>
+
+
+
+</div>
+
+
+<h3 id="download-and-demo">Download and Demo</h3>
+<hr />
+<p>If you don’t know why I made this, please refer to my another post: <a href="/2019/03/31/automated-working-paper-project/" target="_blank">Automated Working Paper Project (Write VBA for You for Free)</a></p>
+
+<p><strong>Download:</strong>  <a href="https://goo.gl/NKNWKf" target="_blank">GLPreparer.xlsm</a> <br />
+<strong>Demo:</strong> <img src="https://imgur.com/83fB2Qo.gif" alt="" /></p>
+
+<h3 id="demand">Demand</h3>
+<hr />
+<p>To Combine descriptions of the general ledger which are been cut when imported into Excel.</p>
+
+<p>It’s quite often that the PBC files are in txt format. When importing such file into Excel, sometimes it really takes time to adjust it to a clean format that you you could verify its amounts or to sample some vouchers from it.</p>
+
+<p>From the acutal instance here, the descriptions are been cut when the client export the GL from its system, like:<br />
+1070801 TT0801  xxx bank transfer to<br />
+                            xxx bank                    debit          30,000 <br />
+1070802 TT0802  Issue covertible<br />
+                            bond                          debit          30,000</p>
+
+<p>When the data is vast and messy in a regulation, the VBA is super useful to deal with it. I could just loop through all the rows in the sheet, find all first rows that have numbers and concatenate descriptions belongs to them.</p>
+
+<p>Below is the source code:</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="c1">'Author: Mike Liao</span>
+<span class="c1">'Date: 2019/3/23</span>
+<span class="c1">'Contact: n9102125@gmail.com</span>
+
+<span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+  <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+  <span class="n">ReadTxt</span>
+  
+  <span class="c1">'新增工作表</span>
+    <span class="k">With</span> <span class="n">ActiveSheet</span>
+      <span class="n">ShName</span> <span class="o">=</span> <span class="s">"總分類帳(整理)"</span>
+      <span class="p">.</span><span class="n">Copy</span> <span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">Sheets</span><span class="p">(</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+     <span class="k">End</span> <span class="k">With</span>
+    <span class="n">Sheets</span><span class="p">(</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">).</span><span class="n">Name</span> <span class="o">=</span> <span class="n">ShName</span>
+
+  <span class="c1">'合併</span>
+  <span class="n">Merge</span>
+  
+  <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Function</span> <span class="nf">ReadTxt</span><span class="p">()</span>
+
+<span class="n">Sheets</span><span class="p">.</span><span class="n">Add</span> <span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">Sheets</span><span class="p">(</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"原始總分類帳"</span>
+<span class="k">Dim</span> <span class="nv">Ret</span>
+    
+    <span class="n">Ret</span> <span class="o">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">GetOpenFilename</span><span class="p">(</span><span class="s">"文字檔案 (*.txt), *.txt"</span><span class="p">)</span>
+
+    <span class="k">If</span> <span class="n">Ret</span> <span class="o">&lt;&gt;</span> <span class="k">False</span> <span class="k">Then</span>
+        <span class="k">With</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">QueryTables</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Connection</span><span class="p">:</span><span class="o">=</span> <span class="n">_</span>
+        <span class="s">"TEXT;"</span> <span class="o">&amp;</span> <span class="n">Ret</span><span class="p">,</span> <span class="n">Destination</span><span class="p">:</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="s">"$A$1"</span><span class="p">))</span>
+        <span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"textfromfile"</span>
+        <span class="p">.</span><span class="n">FieldNames</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">RowNumbers</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">FillAdjacentFormulas</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">PreserveFormatting</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">RefreshOnFileOpen</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">RefreshStyle</span> <span class="o">=</span> <span class="n">xlInsertDeleteCells</span>
+        <span class="p">.</span><span class="n">SavePassword</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">SaveData</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">AdjustColumnWidth</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">RefreshPeriod</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="p">.</span><span class="n">TextFilePromptOnRefresh</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">TextFilePlatform</span> <span class="o">=</span> <span class="mi">950</span>
+        <span class="p">.</span><span class="n">TextFileStartRow</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="p">.</span><span class="n">TextFileParseType</span> <span class="o">=</span> <span class="n">xlFixedWidth</span>
+        <span class="p">.</span><span class="n">TextFileTextQualifier</span> <span class="o">=</span> <span class="n">xlTextQualifierDoubleQuote</span>
+        <span class="p">.</span><span class="n">TextFileConsecutiveDelimiter</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">TextFileTabDelimiter</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">TextFileSemicolonDelimiter</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">TextFileCommaDelimiter</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">TextFileSpaceDelimiter</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="p">.</span><span class="n">TextFileColumnDataTypes</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">TextFileFixedColumnWidths</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">TextFileTrailingMinusNumbers</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">Refresh</span> <span class="n">BackgroundQuery</span><span class="p">:</span><span class="o">=</span><span class="k">False</span>
+
+        <span class="k">End</span> <span class="k">With</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">Function</span>
+
+<span class="k">Function</span> <span class="nf">Merge</span><span class="p">()</span>
+<span class="k">Dim</span> <span class="nv">rng</span> <span class="ow">As</span> <span class="n">Range</span>
+<span class="k">Dim</span> <span class="nv">row</span> <span class="ow">As</span> <span class="n">Range</span>
+<span class="k">Dim</span> <span class="nv">cel</span> <span class="ow">As</span> <span class="n">Range</span>
+<span class="k">Dim</span> <span class="nv">StartIndex</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="nv">EndIndex</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="nv">i</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="nv">CountHowManyRowsNeededConcat</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="nv">Concatstring</span> <span class="ow">As</span> <span class="kt">String</span>
+
+<span class="k">Set</span> <span class="n">rng</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="s">"A1:A"</span> <span class="o">&amp;</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">"A"</span> <span class="o">&amp;</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">rows</span><span class="p">.</span><span class="n">Count</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">row</span><span class="p">)</span>
+
+<span class="k">For</span> <span class="k">Each</span> <span class="n">cel</span> <span class="ow">In</span> <span class="n">rng</span><span class="p">.</span><span class="n">Cells</span>
+  <span class="k">If</span> <span class="n">IsNumeric</span><span class="p">(</span><span class="n">Left</span><span class="p">(</span><span class="n">cel</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="ow">And</span> <span class="p">(</span><span class="n">cel</span><span class="p">.</span><span class="n">Value</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="n">StartIndex</span> <span class="o">=</span> <span class="n">cel</span><span class="p">.</span><span class="n">row</span>
+    <span class="n">CountHowManyRowsNeededConcat</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Concatstring</span> <span class="o">=</span> <span class="s">""</span>
+    
+    <span class="c1">'計算起點及終點</span>
+    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">To</span> <span class="mi">5</span>
+      <span class="k">If</span> <span class="n">IsEmpty</span><span class="p">(</span><span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span><span class="p">)</span> <span class="k">Then</span>
+        <span class="n">CountHowManyRowsNeededConcat</span> <span class="o">=</span> <span class="n">CountHowManyRowsNeededConcat</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">Else</span>
+        <span class="k">Exit</span> <span class="k">For</span>
+      <span class="k">End</span> <span class="k">If</span>
+    <span class="k">Next</span>
+    
+    <span class="c1">'已取得起點及終點，進行字串合併</span>
+    <span class="k">For</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">To</span> <span class="n">CountHowManyRowsNeededConcat</span>
+      <span class="n">Concatstring</span> <span class="o">=</span> <span class="n">Concatstring</span> <span class="o">&amp;</span> <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span>
+      <span class="k">If</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+        <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span>
+      <span class="k">End</span> <span class="k">If</span>
+    <span class="k">Next</span>
+    <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Concatstring</span>
+    
+    <span class="c1">'將數字、借貸方、餘額移上去</span>
+    <span class="k">If</span> <span class="n">CountHowManyRowsNeededConcat</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">6</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">6</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span>
+      <span class="n">Cells</span><span class="p">(</span><span class="n">StartIndex</span><span class="p">,</span> <span class="mi">6</span><span class="p">).</span><span class="n">Offset</span><span class="p">(</span><span class="n">CountHowManyRowsNeededConcat</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">End</span> <span class="k">If</span>
+  <span class="k">End</span> <span class="k">If</span>
+<span class="k">Next</span>
+
+<span class="n">RemoveEmptyRows</span>
+
+<span class="k">End</span> <span class="k">Function</span>
+
+<span class="k">Function</span> <span class="nf">RemoveEmptyRows</span><span class="p">()</span>
+  <span class="k">Dim</span> <span class="nv">r</span> <span class="ow">As</span> <span class="n">Range</span><span class="p">,</span> <span class="n">rows</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
+  <span class="k">Set</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">"A1:F"</span> <span class="o">&amp;</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">"A"</span> <span class="o">&amp;</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">rows</span><span class="p">.</span><span class="n">Count</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">row</span><span class="p">)</span>
+  <span class="n">rows</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">rows</span><span class="p">.</span><span class="n">Count</span>
+  <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">rows</span> <span class="k">To</span> <span class="mi">1</span> <span class="k">Step</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">If</span> <span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">CountA</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">rows</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">Then</span> <span class="n">r</span><span class="p">.</span><span class="n">rows</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">Delete</span>
+  <span class="k">Next</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p><br />
+<br /></p>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-noworneverev-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+    <footer>
+      <p style="font-family:'Space Mono', monospace;">&copy; Copyright 2017 | Noworneverev's Blog | All rights reserved</p>
+  </footer>
+</div>
+  <!-- Calling Fontawesome at the end to avoid delay in loading --> 
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106614437-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106614437-1');
+</script>
+</body>
+</html>
